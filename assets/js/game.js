@@ -1,15 +1,15 @@
 // Declare "count down"  numbers
 
 // declare "questions"
-// var questionPosition = 0;
-// var questions = [
-//{ question
-//answers- answer: ["answer A", "answer B",]
-//correct answer},
-//{question
-//answers
-//correct answer }
-// ];
+var questionPosition = 0;
+var questions = [
+{ question: ["Question 1"]
+    answers: ["answer A", "answer B","answer C", "answer D"]
+correct answer: ["answer A"]},
+{question: ["Question 2"]
+answers: ["answer A", "answer B","answer C", "answer D"]
+correct answer: ["answer B"]} 
+];
 
 // var currentQuestion = questions[questionPosition];
 //Declare the "timeInterval"
