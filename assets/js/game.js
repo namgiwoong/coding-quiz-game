@@ -19,19 +19,28 @@ var currentQuestion = questions[questionPosition];
 //Declare the "timeInterval"
 //Declare the "timeEl"
 var timeEl = document.querySelector("#timer");
+var timerCount;
 
 //Function "startGame"
 function startQuiz() {
+  timerCount = 20;
   console.log("started");
-
   // hide the start screen
+
   // set the question position to 0
   questionPosition = 0;
   // display the current question
-
+  currentQuestion = questions[questionPosition];
   // set the starting value of "countdown"
   // start the timer "startTimer"
-  // IF "countdown" === 0 THEN "endGame()"
+  function startTimer() {
+    timer = setInterval(function () {
+      timerCount--;
+      if (countdown === 0) {
+        endGame();
+      }
+    });
+  }
 }
 document.addEventListener("click", startQuiz);
 // Function "answerQuestion"
