@@ -1,5 +1,6 @@
 // Declare "count down"  numbers
 var timerCount;
+var timer;
 // declare "questions"
 var questionPosition = 0;
 var questions = [
@@ -36,18 +37,21 @@ function startQuiz() {
   }
   // set the starting value of "countdown"
   timerCount = 20;
-
-  // start the timer "startTimer"
-  function startTimer() {
-    timer = setInterval(function () {
-      timerCount--;
-      if (countdown === 0) {
-        clearInterval(timer);
-        endGame();
-      }
-    });
-  }
+  startTimer();
 }
+
+// start the timer "startTimer"
+function startTimer() {
+  timer = setInterval(function () {
+    timerCount--;
+    timeEl.textContent = timerCount;
+    if (countdown === 0) {
+      clearInterval(timer);
+      endGame();
+    }
+  }, 1000);
+}
+
 var startButton = document.querySelector("#start");
 startButton.addEventListener("click", startQuiz);
 // Function "answerQuestion"
