@@ -45,7 +45,7 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timeEl.textContent = timerCount;
-    if (countdown === 0) {
+    if (timerCount === 0) {
       clearInterval(timer);
       endGame();
     }
