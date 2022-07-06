@@ -25,14 +25,15 @@ function startQuiz() {
   console.log("started");
   // hide the start screen
   var removeEl = document.querySelector("#container");
-  removeEl.removeClass("hidden");
+  removeEl.remove("hidden");
 
   // set the question position to 0
   questionPosition = 0;
 
   // display the current question
-  currentQuestion = questions[questionPosition];
-
+  for (i = 0; i < questions.length; i++) {
+    correctAnswer = [];
+  }
   // set the starting value of "countdown"
   timerCount = 20;
 
@@ -47,7 +48,8 @@ function startQuiz() {
     });
   }
 }
-document.addEventListener("click", startQuiz);
+var startButton = document.querySelector("#start");
+startButton.addEventListener("click", startQuiz);
 // Function "answerQuestion"
 // var currentQuestion = questions[questionPosition];
 // check if the selected answer is correct
