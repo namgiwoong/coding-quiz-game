@@ -14,27 +14,37 @@ var questions = [
     answers: ["answer A", "answer B", "answer C", "answer D"],
     correctAnswer: "answer B",
   },
+  {
+    question: "Question 3",
+    answers: ["answer A", "answer B", "answer C", "answer D"],
+    correctAnswer: "answer C",
+  },
 ];
 
 var currentQuestion = questions[questionPosition];
+
 //Declare the "timeInterval"
 //Declare the "timeEl"
 var timeEl = document.querySelector("#timer");
 
 //Function "startGame"
 function startQuiz() {
-  console.log("started");
-  // hide the start screen
   var removeEl = document.querySelector("#container");
+  var quizBox = document.querySelector("#quiz-box");
+
+  console.log("started");
+
+  // hide the start screen
   removeEl.remove("hidden");
+
+  // removing class from div to display questions
+  quizBox.classList.remove("hidden");
 
   // set the question position to 0
   questionPosition = 0;
 
   // display the current question
-  for (i = 0; i < questions.length; i++) {
-    correctAnswer = [];
-  }
+
   // set the starting value of "countdown"
   timerCount = 20;
   startTimer();
@@ -54,6 +64,7 @@ function startTimer() {
 
 var startButton = document.querySelector("#start");
 startButton.addEventListener("click", startQuiz);
+
 // Function "answerQuestion"
 // var currentQuestion = questions[questionPosition];
 // check if the selected answer is correct
@@ -77,3 +88,31 @@ startButton.addEventListener("click", startQuiz);
 //clear time interval to stop it from running
 
 //Function "recordTheHighscore"- ref-web api day 3
+
+function displayQuestion() {
+  var quizBox = document.querySelector("#questionsContent");
+  // get the text of the current question
+  var currentQuestion = questions[questionPosition];
+
+  var questionText = currentQuestion.question;
+
+  quizBox.textContent = questionText;
+
+  var answers = currentQuestion.answers;
+
+  // for (i = 0; i < answers.length; i++) {
+  //   console.log(answers[i]);
+  //
+  for (let index = 0; index < answers.length; index++) {
+    const element = answers[index];
+    console.log(element);
+
+    const btnid = document.querySelector("#btn-" + index);
+
+    btnid.textContent = element;
+  }
+  // assign quiz boxes text content to question text
+}
+displayQuestion();
+
+//https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
