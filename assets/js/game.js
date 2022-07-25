@@ -43,8 +43,6 @@ function startQuiz() {
   // set the question position to 0
   questionPosition = 0;
 
-  // display the current question
-
   // set the starting value of "countdown"
   timerCount = 20;
   startTimer();
@@ -66,18 +64,24 @@ var startButton = document.querySelector("#start");
 startButton.addEventListener("click", startQuiz);
 
 // Function "answerQuestion"
-// var currentQuestion = questions[questionPosition];
-// check if the selected answer is correct
-// IF the answer is wrong
-// THEN we need to subtract from "countdown"
+function answerQuestion() {
+  // check if the selected answer is correct
+  var currentQuestion = questions[questionPosition];
+  var playerAnswer = currentQuestion.answers;
+  var questionAnswer = currentQuestion.correctAnswer;
 
-//Display the next question
-// questionPosition++;
-// displayCurrentQuestion();
+  if (playerAnswer === questionAnswer) {
+    // Display the next question
+    questionPosition++;
+  }
+  // IF the answer is wrong
+  else if (playerAnswer !== questionAnswer) {
+    // THEN we need to subtract from "countdown"
+    questionPosition++;
+  }
+}
+
 //IF I've passed the last question THEN "endGame() ELSE displayCurrentQuestion()"
-
-//Function "displayCurrentQuestion"- ref- web apis day 2
-// var currentQuestion = questions[questionPosition];
 
 //Function "endGame"
 // function endGame(){
@@ -91,18 +95,18 @@ startButton.addEventListener("click", startQuiz);
 
 function displayQuestion() {
   var quizBox = document.querySelector("#questionsContent");
-  // get the text of the current question
   var currentQuestion = questions[questionPosition];
 
   var questionText = currentQuestion.question;
 
+  // get the text of the current question
   quizBox.textContent = questionText;
 
   var answers = currentQuestion.answers;
 
   // for (i = 0; i < answers.length; i++) {
   //   console.log(answers[i]);
-  //
+
   for (let index = 0; index < answers.length; index++) {
     const element = answers[index];
     console.log(element);
@@ -110,8 +114,10 @@ function displayQuestion() {
     const btnid = document.querySelector("#btn-" + index);
 
     btnid.textContent = element;
+
+    // clicking the buttons for answers
+    btnid.addEventListener("click", answerQuestion);
   }
-  // assign quiz boxes text content to question text
 }
 displayQuestion();
 
