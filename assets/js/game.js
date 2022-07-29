@@ -1,6 +1,7 @@
 // Declare "count down"  numbers
 var timerCount;
 var timer;
+var timeInterval;
 // declare "questions"
 var questionPosition = 0;
 var questions = [
@@ -50,11 +51,12 @@ function startQuiz() {
 
 // start the timer "startTimer"
 function startTimer() {
-  timer = setInterval(function () {
+  timeInterval = setInterval(function () {
     timerCount--;
     timeEl.textContent = timerCount;
-    if (timerCount === 0) {
-      clearInterval(timer);
+    if (timerCount <= 0) {
+      //clear time interval to stop it from running
+      clearInterval(timeInterval);
       endGame();
     }
   }, 1000);
@@ -64,32 +66,44 @@ var startButton = document.querySelector("#start");
 startButton.addEventListener("click", startQuiz);
 
 // Function "answerQuestion"
-function answerQuestion() {
+function answerQuestion(e) {
   // check if the selected answer is correct
   var currentQuestion = questions[questionPosition];
-  var playerAnswer = currentQuestion.answers;
+  var playerAnswer = e.target.textContent;
   var questionAnswer = currentQuestion.correctAnswer;
 
+  console.log(e.target.textContent);
+
+  // Display the next question
   if (playerAnswer === questionAnswer) {
-    // Display the next question
-    questionPosition++;
+    console.log(true);
   }
   // IF the answer is wrong
-  else if (playerAnswer !== questionAnswer) {
-    // THEN we need to subtract from "countdown"
+  // THEN we need to subtract from "countdown"
+  else {
+    console.log(false);
+    timerCount = timerCount - 5;
+  }
+  //end game if player answers all the question
+  if (questionPosition === 2) {
+    endGame();
+  } else {
     questionPosition++;
+    displayQuestion();
   }
 }
 
-//IF I've passed the last question THEN "endGame() ELSE displayCurrentQuestion()"
-
 //Function "endGame"
-// function endGame(){
-//     clearInterval(timeInterval);
-// }
+function endGame() {
+  clearInterval(timeInterval);
+}
+
 //hide question area
+function hideQuestion() {
+  var quizBox = document.querySelectorad("#quiz-box");
+  quizBox.classList.add("hidden");
+}
 //show the record high score
-//clear time interval to stop it from running
 
 //Function "recordTheHighscore"- ref-web api day 3
 
