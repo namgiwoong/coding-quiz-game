@@ -96,6 +96,7 @@ function answerQuestion(e) {
 //Function "endGame"
 function endGame() {
   clearInterval(timeInterval);
+  hideQuestion();
 }
 
 //hide question area
