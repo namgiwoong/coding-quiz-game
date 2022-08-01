@@ -96,7 +96,6 @@ function answerQuestion(e) {
 //Function "endGame"
 function endGame() {
   clearInterval(timeInterval);
-  hideQuestion();
 }
 
 //hide question area
@@ -137,3 +136,6 @@ function displayQuestion() {
 displayQuestion();
 
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+
+// track score?
+//
