@@ -4,6 +4,7 @@ saveButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   localStorage.setItem("playerScore", JSON.stringify(player));
+  renderScore();
 });
 
 function renderScore() {

@@ -96,14 +96,17 @@ function answerQuestion(e) {
 //Function "endGame"
 function endGame() {
   clearInterval(timeInterval);
+  hideQuestion();
 }
 
 //hide question area
 function hideQuestion() {
-  var quizBox = document.querySelectorad("#quiz-box");
+  var quizBox = document.querySelector("#quiz-box");
   quizBox.classList.add("hidden");
+  //show the record high score
+  var inputName = document.querySelector("#finish");
+  inputName.classList.remove("hidden");
 }
-//show the record high score
 
 //Function "recordTheHighscore"- ref-web api day 3
 
