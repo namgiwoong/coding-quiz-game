@@ -1,9 +1,15 @@
 var player = document.getElementById("playerName");
+var submitButton = document.getElementById("submit");
 
-saveButton.addEventListener("click", function (event) {
+submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  localStorage.setItem("playerScore", JSON.stringify(player));
+  // local Storage
+  // var playerScore = {
+  //   player:
+  //   score:
+  // }
+  localStorage.setItem("playerScore", JSON.stringify(playerScore));
   renderScore();
 });
 
@@ -11,6 +17,7 @@ function renderScore() {
   var playerScore = JSON.parse(localStorage.getItem("playerScore"));
 
   if (playerScore !== null) {
-    document.querySelector(".savedScore").textContent = playerScore.player;
+    document.querySelector(".savedScore").textContent =
+      "Your final score is " + playerScore.score;
   }
 }

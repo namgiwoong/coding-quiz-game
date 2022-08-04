@@ -4,6 +4,9 @@ var timer;
 var timeInterval;
 // declare "questions"
 var questionPosition = 0;
+// declare "score"
+var playerScore = 0;
+
 var questions = [
   {
     question: "Question 1",
@@ -43,6 +46,8 @@ function startQuiz() {
 
   // set the question position to 0
   questionPosition = 0;
+  // set the player score to 0
+  playerScore = 0;
 
   // set the starting value of "countdown"
   timerCount = 20;
@@ -77,6 +82,9 @@ function answerQuestion(e) {
   // Display the next question
   if (playerAnswer === questionAnswer) {
     console.log(true);
+    // add 10 each time player gets the question right
+    playerScore += 10;
+    console.log(playerScore);
   }
   // IF the answer is wrong
   // THEN we need to subtract from "countdown"
@@ -126,7 +134,7 @@ function displayQuestion() {
 
   for (let index = 0; index < answers.length; index++) {
     const element = answers[index];
-    console.log(element);
+    // console.log(element);
 
     const btnid = document.querySelector("#btn-" + index);
 
@@ -141,4 +149,3 @@ displayQuestion();
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
 // track score?
-//
