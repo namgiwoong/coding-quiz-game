@@ -116,8 +116,6 @@ function hideQuestion() {
   inputName.classList.remove("hidden");
 }
 
-//Function "recordTheHighscore"- ref-web api day 3
-
 function displayQuestion() {
   var quizBox = document.querySelector("#questionsContent");
   var currentQuestion = questions[questionPosition];
@@ -147,5 +145,3 @@ function displayQuestion() {
 displayQuestion();
 
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-
-// track score?
